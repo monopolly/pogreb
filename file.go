@@ -4,7 +4,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/akrylysov/pogreb/fs"
+	"github.com/monopolly/pogreb/fs"
 )
 
 type file struct {
