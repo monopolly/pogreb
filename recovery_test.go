@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/akrylysov/pogreb/internal/assert"
+	"github.com/monopolly/pogreb/internal/assert"
 )
 
 func TestRecovery(t *testing.T) {
