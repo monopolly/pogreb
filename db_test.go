@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/akrylysov/pogreb/fs"
-	"github.com/akrylysov/pogreb/internal/assert"
+	"github.com/monopolly/pogreb/fs"
+	"github.com/monopolly/pogreb/internal/assert"
 )
 
 func touchFile(path string) error {
