@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/akrylysov/pogreb/internal/assert"
+	"github.com/monopolly/pogreb/internal/assert"
 )
 
 func TestOSLockFile(t *testing.T) {
