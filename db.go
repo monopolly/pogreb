@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/akrylysov/pogreb/fs"
-	"github.com/akrylysov/pogreb/internal/hash"
+	"github.com/monopolly/pogreb/fs"
+	"github.com/monopolly/pogreb/internal/hash"
 )
 
 const (
