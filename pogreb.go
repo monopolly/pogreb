@@ -27,7 +27,7 @@ type DB struct {
 }
 
 // has
-func (a *DB) Has(k, v []byte) (has bool) {
+func (a *DB) Has(k []byte) (has bool) {
 	has, _ = a.db.Has(k)
 	return
 }
