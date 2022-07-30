@@ -13,7 +13,7 @@ import (
 func TestMain(u *testing.T) {
 	__(u)
 
-	New("temp1", func(s string) {
+	/* New("temp1", func(s string) {
 		fmt.Print(s)
 	})
 
@@ -25,10 +25,10 @@ func TestMain(u *testing.T) {
 	}
 
 	fmt.Println("done")
-	select {}
+	select {} */
 }
 
-func Benchmark1(u *testing.B) {
+func BenchmarkPrint(u *testing.B) {
 	u.ReportAllocs()
 	u.ResetTimer()
 	for n := 0; n < u.N; n++ {
@@ -36,12 +36,12 @@ func Benchmark1(u *testing.B) {
 	}
 }
 
-func Benchmark2(u *testing.B) {
-	u.RunParallel(func(pb *testing.PB) {
-		for pb.Next() {
+func BenchmarkNoPrint(u *testing.B) {
+	u.ReportAllocs()
+	u.ResetTimer()
+	for n := 0; n < u.N; n++ {
 
-		}
-	})
+	}
 }
 
 func __(u *testing.T) {

@@ -6,15 +6,16 @@ import (
 )
 
 // goroutine to catch os signal
-func Closer(db ...*DB) {
-	if len(db) == 0 {
-		return
-	}
+func Closer(add chan *DB) {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	go func() {
-		for range c {
-			for _, x := range db {
+		var dblist []*DB
+		select {
+		case db := <-add:
+			dblist = append(dblist, db)
+		case <-c:
+			for _, x := range dblist {
 				x.Close()
 			}
 			os.Exit(1)
