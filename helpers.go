@@ -1,7 +1,7 @@
 package pogreb
 
 import (
-	"github.com/monopolly/numbers"
+	"encoding/binary"
 )
 
 func (a *DB) String(k string, v ...string) (r string) {
@@ -22,9 +22,11 @@ func (a *DB) Int(k string, v ...int) (r int) {
 		if err != nil || len(vv) == 0 {
 			return
 		}
-		return numbers.BytesInt(vv)
+		return int(binary.LittleEndian.Uint64(vv))
 	}
-	a.Put([]byte(k), numbers.IntBytes(v[0]))
+	bb := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bb, uint64(v[0]))
+	a.Put([]byte(k), bb)
 	return
 }
 
@@ -34,9 +36,11 @@ func (a *DB) Int64(k string, v ...int64) (r int64) {
 		if err != nil || len(vv) == 0 {
 			return
 		}
-		return numbers.BytesInt64(vv)
+		return int64(binary.LittleEndian.Uint64(vv))
 	}
-	a.Put([]byte(k), numbers.Int64Bytes(v[0]))
+	bb := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bb, uint64(v[0]))
+	a.Put([]byte(k), bb)
 	return
 }
 
@@ -46,9 +50,11 @@ func (a *DB) Uint64(k string, v ...uint64) (r uint64) {
 		if err != nil || len(vv) == 0 {
 			return
 		}
-		return numbers.BytesUint64(vv)
+		return binary.LittleEndian.Uint64(vv)
 	}
-	a.Put([]byte(k), numbers.Uint64Bytes(v[0]))
+	bb := make([]byte, 8)
+	binary.LittleEndian.PutUint64(bb, uint64(v[0]))
+	a.Put([]byte(k), bb)
 	return
 }
 

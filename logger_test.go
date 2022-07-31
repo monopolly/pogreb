@@ -3,6 +3,7 @@ package pogreb
 //testing
 import (
 	"fmt"
+	"os"
 	"strings"
 	"testing"
 	//testing
@@ -12,20 +13,12 @@ import (
 
 func TestMain(u *testing.T) {
 	__(u)
-
-	/* New("temp1", func(s string) {
+	defer os.RemoveAll("temp1")
+	d, _ := New("temp1", func(s string) {
 		fmt.Print(s)
 	})
+	d.Close()
 
-	b, _ := New("temp2")
-	//go Closer(a, b)
-
-	for i := 0; i < 100000; i++ {
-		b.Add(fmt.Sprint(i), []byte("ok"))
-	}
-
-	fmt.Println("done")
-	select {} */
 }
 
 func BenchmarkPrint(u *testing.B) {
